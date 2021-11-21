@@ -19,13 +19,7 @@ app.all('*', function (req, res, next) {
         // CORS Preflight
         res.send();
     } else {
-        var targetURL = req.header('Target-URL'); // Target-URL ie. https://example.com or http://example.com
-        targetURL = "https://testnet-master-1.lamden.io";
-        console.log("Target URL: "+targetURL);
-        if (!targetURL) {
-            res.sendStatus(500).send({ error: 'There is no Target-Endpoint header in the request' });
-            return;
-        }
+        var targetURL = "https://masternode-01.lamden.io";
         request({ url: targetURL + req.url, method: req.method, json: req.body},
             function (error, response, body) {
                 if (error) {
